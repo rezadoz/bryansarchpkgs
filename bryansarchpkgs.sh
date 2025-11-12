@@ -2,7 +2,11 @@
 
 # Arch package dump script
 echo -e "Welcome to bryan's arch package dump. We are going to:\n- install yay if needed\n- install bryan's packages"
-sleep 3
+sleep 1
+echo -e "make sure you have multilib enabled in your `/etc/pacman.conf` cause I don't feel like adding that function"
+sleep 1
+echo -e "also you might not even need to enable multilib, but im pretty sure it's required for the gaming packages idk"
+sleep 1
 
 # Install yay if not already present
 if ! command -v yay &>/dev/null; then
@@ -31,7 +35,7 @@ yay -Syu --needed --noconfirm \
     fastfetch-git figlet figlet-fonts figlet-fonts-extra fireplace-git gotop iftop \
     jnettop nload nnn pipes.js-git tenki uwufetch zenith bat dysk fkill tree vnstat wego \
     zram-generator rsync epr-git kew neovim ranger yazi tldr++ cool-retro-term konsole \
-    brother-mfc-j1010dw jellyfin-server kvantum powerlevel10k cozette-otb dina-font \
+    tmux jellyfin-server kvantum powerlevel10k cozette-otb dina-font \
     ttf-bigblueterminal-nerd ttf-daddytime-mono-nerd ttf-fantasque-nerd ttf-iosevka-nerd \
     ttf-iosevkaterm-nerd ttf-monoid-nerd ttf-uzura-font
 
@@ -42,7 +46,7 @@ if [[ "$situational" =~ ^[Yy]?$ ]]; then
 fi
 
 # Gaming package prompt
-read -rp $'\nInstall gaming packages? "steam vapour wine winetricks umu-launcher"\nY/n: ' gaming
+read -rp $'\nInstall gaming packages? "retroarch steam vapour wine winetricks umu-launcher"\nY/n: ' gaming
 if [[ "$gaming" =~ ^[Yy]?$ ]]; then
     yay -Syu --needed --noconfirm steam vapour wine winetricks umu-launcher
 fi
